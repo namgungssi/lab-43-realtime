@@ -1,9 +1,12 @@
 import io from 'socket.io'
-
 import authSubscriber from "./subscribers/auth";
 import messageSubscriber from "./subscribers/message";
 
+
+
 const subscribers = Object.assign({}, authSubscriber, messageSubscriber)
+
+
 
 export default (http) => {
     return io(http)

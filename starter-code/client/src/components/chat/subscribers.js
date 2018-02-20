@@ -1,3 +1,4 @@
+
 // TODO: import our chat actions
 
 // TODO: Create subscribers (listeners for socket.io messages)
@@ -8,3 +9,20 @@
   // }
 
 // TODO: export these as default {s1,s2,s3}
+
+
+import * as chatActions from './actions'
+
+const MESSAGE = (store) => (socket) => (payload) => {
+  store.dispatch(chatActions.message(payload));
+}
+
+const USER_CONNECTED = (store) => (socket) => (payload) => {
+  store.dispatch(chatActions.connect(payload));
+}
+
+const USER_DISCONNECTED = (store) => (socket) => (payload) => {
+  store.dispatch(chatActions.disconnect(payload));
+}
+
+export default {MESSAGE, USER_CONNECTED, USER_DISCONNECTED};
